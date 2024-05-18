@@ -13,16 +13,16 @@ swag = {
 user_bp = Blueprint('user', __name__, url_prefix='/user')
 
 
-#-------------------------- GET ALL --------------------------------------
-@user_bp.get('')
-@swag_from({
-    **swag,
-    "responses": {
-        200: {"description": "Success request"},
-    }
-})
-def get_all_users() -> Response:
-    return make_response(jsonify(user_controller.find_all()), HTTPStatus.OK)
+# #-------------------------- GET ALL --------------------------------------
+# @user_bp.get('')
+# @swag_from({
+#     **swag,
+#     "responses": {
+#         200: {"description": "Success request"},
+#     }
+# })
+# def get_all_users() -> Response:
+#     return make_response(jsonify(user_controller.find_all()), HTTPStatus.OK)
 
 
 #-------------------------- LOGIN --------------------------------
@@ -83,25 +83,25 @@ def registration() -> Response:
     return make_response("Successfull registration", HTTPStatus.CREATED)
 
 
-#-------------------------- GET BY ID --------------------------------
-@user_bp.get('/<int:id>')
-@swag_from({
-    **swag,
-    "parameters": [
-        {
-            "name": "id",
-            "in": "path",
-            "type": "integer",
-            "required": "true",
-        }
-    ],
-    "responses": {
-        200: {"description": "Success request", "schema": UserResponseSchema},
-        404: {"description": "User not found"},
-    }
-})
-def get_user(id: int) -> Response:
-    return make_response(jsonify(user_controller.find_by_id(id)), HTTPStatus.OK)
+# #-------------------------- GET BY ID --------------------------------
+# @user_bp.get('/<int:id>')
+# @swag_from({
+#     **swag,
+#     "parameters": [
+#         {
+#             "name": "id",
+#             "in": "path",
+#             "type": "integer",
+#             "required": "true",
+#         }
+#     ],
+#     "responses": {
+#         200: {"description": "Success request", "schema": UserResponseSchema},
+#         404: {"description": "User not found"},
+#     }
+# })
+# def get_user(id: int) -> Response:
+#     return make_response(jsonify(user_controller.find_by_id(id)), HTTPStatus.OK)
 
 
 #-------------------------- UPDATE --------------------------------
